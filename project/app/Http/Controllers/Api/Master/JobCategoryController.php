@@ -7,8 +7,6 @@ use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 // model
 use App\Models\JobCategory;
-// request
-use App\Http\Requests\Master\JobCategoryListRequest;
 // openapi
 use App\OpenAPI;
 use App\Libs\OpenAPIUtility;
@@ -21,7 +19,7 @@ class JobCategoryController  extends Controller
      * @param  JobCategoryListRequest $request
      * @return JsonResponse
      */
-    public function list(JobCategoryListRequest $request): JsonResponse
+    public function list(Request $request): JsonResponse
     {
         // oasのリクエストモデルに変換
         $parameters = new OpenAPI\Model\QueryJobCategoryList($request->all());

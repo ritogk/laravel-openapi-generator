@@ -15,12 +15,17 @@ paths:
       description: 詳細内容
       parameters:
         - in: query
-          name: values
+          name: name
           schema:
-            type: object
-            $ref: "#/components/schemas/queryJobCategoryList"
-          style: form
-          explode: true
+            type: string
+          description: 名称
+          required: false
+        - in: query
+          name: content
+          schema:
+            type: string
+          description: 内容
+          required: false
       responses:
         "200":
           description: 職種一覧
@@ -30,7 +35,6 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/jobCategory"
-
 components:
   schemas:
     queryJobCategoryList:
@@ -44,7 +48,7 @@ components:
           type: string
           description: 内容
     jobCategory:
-      description: 職種
+      description: レスポンス 職種
       type: object
       properties:
         id:
